@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>教育陪</title>
+        <link rel="stylesheet" href="http://g0v.github.io/zh-stroke-data/examples/canvas/css/demo.css" type="text/css" media="screen">
+        <script src="http://g0v.github.io/zh-stroke-data/examples/lib/raf.min.js"></script>
+        <script src="http://g0v.github.io/zh-stroke-data/examples/lib/jquery-1.9.1.min.js"> </script>
+        <script src="http://g0v.github.io/zh-stroke-data/examples/lib/sax.js"> </script>
+        <script src="http://g0v.github.io/zh-stroke-data/examples/lib/q.min.js"> </script>
+        <script src="http://g0v.github.io/zh-stroke-data/js/loaders.js"> </script>
+        <script src="http://g0v.github.io/zh-stroke-data/js/string.js"> </script>
+        <script src="http://g0v.github.io/zh-stroke-data/examples/canvas/js/draw.js"> </script>
+        <script>
+          $(function () {
+            var $word = $("#word");
+            var f = function () {
+              loaders = zhStrokeData.strokers.canvas(
+                "#holder",
+                $word.val(),
+                {
+                  url: "../../",
+                  dataType: "json"
+                }
+              );
+              promises = loaders.map(function (l) {
+                return l.load().done(function (w) {
+                  w.drawBackground();
+                });
+              });
+              (promises.reduceRight(function (next, current) {
+                return function () {
+                  current.done(function (w) {
+                    w.draw().done(next);
+                  });
+                };
+              }, function(){})());
+            };
+            $word.change(f);
+            f();
+          });
+        </script>
+    </head>
+    <body>
+        <input type="text" id="word" value="教育陪"/>
+        <div id="holder"></div>
+        <p id="copyright"> forked from g0v</p>
+    </body>
+</html>
