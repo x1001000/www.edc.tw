@@ -50,7 +50,7 @@
                     recognition.lang = "zh-TW";
                     recognition.start();
                     recognition.onresult = function(e) {
-                        document.getElementById('transcript').value = e.results[0][0].transcript;
+                        document.getElementById('word').value = e.results[0][0].transcript;
                         recognition.stop();
                         document.getElementById('labnol').submit();
                     }
