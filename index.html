@@ -52,7 +52,7 @@
                     recognition.onresult = function(e) {
                         document.getElementById('transcript').value = e.results[0][0].transcript;
                         recognition.stop();
-                        document.getElementById('labnol').submit();
+                        document.getElementById('word').submit();
                     }
                     recognition.onerror = function(e) {
                     recognition.stop();
@@ -63,7 +63,7 @@
 
     </head>
     <body>
-        <p align="center"><input type="text" id="labnol" style="font-size:66px" placeholder="想寫(說)些什麼？" value="" /><img onclick="startDictation()" src="mic.gif" /></p>
+        <p align="center"><input type="text" id="word" style="font-size:66px" placeholder="想寫(說)些什麼？" value="" /><img onclick="startDictation()" src="mic.gif" /></p>
         <div id="holder"></div>
         <p id="copyright"></p>
     </body>
