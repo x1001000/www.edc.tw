@@ -53,6 +53,8 @@
                         document.getElementById('word').value = e.results[0][0].transcript;
                         recognition.stop();
                         //document.getElementById('labnol').submit();
+                        $word.change(f);
+                        f();
                     }
                     recognition.onerror = function(e) {
                     recognition.stop();
