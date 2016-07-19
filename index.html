@@ -22,7 +22,7 @@
                     recognition.onresult = function(e) {
                         document.getElementById('word').value = e.results[0][0].transcript;
                         recognition.stop();
-                        document.getElementById('word').value += "\u2661";
+                        document.getElementById('word').value += "\u13";
                     }
                     recognition.onerror = function(e) {
                     recognition.stop();
