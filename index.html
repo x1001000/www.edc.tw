@@ -1,19 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-
 <html>
-<head>
-<title>百千程式翻轉教育部</title>
-<meta http-equiv='Content-Type' content='text/html; charset=big5'>
-</head>
-<body>
-<style type="text/css">
-#wrap {
-    -webkit-transform: rotate(87deg);
-    -moz-transform: rotate(87deg);
-}
-</style>
-<div id='wrap'>
-<iframe width=2000 height=2000 src='https://www.edu.tw'></iframe>
-</div>
-</body>
+    <head>
+        <title>百千程式翻轉教育部</title>
+        <script>
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            async function rotate() {
+                x=document.getElementById("iframe")
+                for (var i = 1; i < 87; i++) {
+                    x.style.transform="rotate("+i+"deg)"
+                    x.style.webkitTransform="rotate("+i+"deg)"
+                    x.style.OTransform="rotate("+i+"deg)"
+                    x.style.MozTransform="rotate("+i+"deg)"
+                    await sleep(10);
+                }
+            }
+        </script>
+    </head>
+    <body onload="rotate()">
+        <iframe id="iframe" width=100% height=1500 src="https://www.edu.tw"></iframe>
+    </body>
 </html>
