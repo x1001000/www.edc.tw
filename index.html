@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>百千程式翻轉教育部</title>
+        <style>
+            .rotated {
+              transform: rotate3d(0, 0, 1, 87deg);
+              transition: transform 1000ms ease-in-out;
+            }
+        </style>
+        <script>
+            function rotate() {
+              document.getElementById('iframe').classList.add('rotated');
+            }
+        </script>
+    </head>
+    <body onload="rotate()">
+        <iframe id="iframe" width=100% height=1000 src="https://www.edu.tw"></iframe>
+    </body>
+</html>
